@@ -1,89 +1,59 @@
 ---
 layout: cv
-title: Isaac Newtons's CV
+title: Resume Garidon Hendricks
 ---
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
+# Garidon Hendricks
 
 <div id="webaddress">
-<a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
-| <a href="http://en.wikipedia.org/wiki/Isaac_Newton">My wikipedia page</a>
+| <a href="linkedin.com/in/garidon">My LinkedIn Page</a>
 </div>
-
-
-## Currently
-
-Standing on the shoulders of giants
-
-### Specialized in
-
-Laws of motion, gravitation, minting coins, disliking [Robert Hooke](http://en.wikipedia.org/wiki/Robert_Hooke)
-
-
-### Research interests
-
-Cooling, power series, optics, alchemy, planetary motions, apples.
-
 
 ## Education
 
-`1654-1660`
-__The King's School, Grantham.__
-
-`June 1661 - now`
-__Trinity College, Cambridge__
-
-- Sizar
-
-`1667 - death`
-__Trinity College, Cambridge__
-
-- Fellow
+`B.S. in Business Management`
+__Brigham Young University - Idaho__
+- Minors in Business Analytics and Music
+- Integrated Business Core: 
+    - Part-owner/operator of a student-run business for 9 weeks that achieved $9k+ in revenue and $4k+ in operating profit
+    - Created KPI visibility throughout the company by assembling and managing a consolidated 4DX dashboard
+- Courses: Data Science Programming, Organizational Leadership, Professional Selling, Intro to Software Development, Financial Management
 
 
+## Experience
 
-## Awards
+`Program Assessment Coordinator, Pilot Program Coordinator`
+__First Year Experience, BYU-Idaho__, Sept 2024 - Nov 2025; Rexburg, ID
 
-`2012`
-President, *Royal Society*, London, UK
+- Gathered, interpreted, and visualized qualitative and quantitative data to help senior leadership make data-driven strategy decisions
+- Affected change by presenting findings to senior program leadership
+- Administered multiple pilot programs to develop future organizational initiatives
+- Designed and delivered training content for 125 New Student Mentors 
 
-Associate, *French Academy of Science*, Paris, France
+`Session Coordinator`
+__FSY (Youth Summer Camps)__, Seasonal, Summers 2024-2025; UT, SC, CO, NE, etc.
+- Led and mentored hundreds of young adult counselors
+- Ensured alignment to program goals for conferences of 700+ teens through adherence to policies and
+procedures
+- Mitigated 20+ emergency situations by partnering with full-time administrative staff 
 
-
-
-## Publications
-
-<!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
-
-### Journals
-
-`1669`
-Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
-
-`1669`
-Lectiones opticæ.
-
-etc. etc. etc.
-
-### Patents
-
-`2012`
-Infinitesimal calculus for solutions to physics problems, [SMBC](http://www.techdirt.com/articles/20121011/09312820678/if-patents-had-been-around-time-newton.shtml) patent 001
+`Data and Social Media Secretary - Volunteer Missionary`
+__Brazil João Pessoa Mission__, Jan-July 2023; João Pessoa, Brazil
+- Tracked and reported key performance indicators for 100+ missionaries weekly in Microsoft Excel
+- Restructured inbound-lead management system to enable timely contact by correct representatives
+- Managed social media advertising 
 
 
-## Occupation
+## Skills
 
-`1600`
-__Royal Mint__, London
-
-- Warden
-- Minted coins
-
-`1600`
-__Lucasian professor of Mathematics__, Cambridge University
+- Python (scikit learn, pandas, letsplot)
+- Microsoft Excel, PowerPoint, Word, and Teams
+- GitHub
+- Excellent written and verbal communication (public speaking)
 
 
+## Foreign Languages
+- Portuguese (fluent, 20 months immersive experience with native speakers)
 
 <!-- ### Footer
 
-Last updated: May 2013 -->
+Last updated: Nov 2025 -->
