@@ -41,7 +41,7 @@ In class, we graphed a name's popularity over time based on absolute numbers of 
 The Social Security Administration helpfully makes free reports available on how many children are named what each year. After compiling those into a csv, I created a gendered_year_total column to use in our percentage calculation. This is a more accurate representation of the likelihood of parents picking a given name than comparing it to the whole population, though as we'll see later, there are some who go against the grain when it comes to gendered naming patterns.
 
 ```{python}
-babynames = pd.read_csv(r'C:\Users\garid\Documents\GitHub\garidon_fall2025_2\Personal_Projects\Baby Names\all_names.csv')
+babynames = pd.read_csv('https://raw.githubusercontent.com/Garidon/Garidon-Hendricks---Data-Science-Portfolio/refs/heads/main/Story_Telling/Baby%20Names/all_names.csv')
 
 babynames['gendered_year_total'] = babynames.groupby(['year','sex'])['count'].transform('sum')
 
