@@ -1,0 +1,118 @@
+---
+title: "Bestseller? I Barely Know Her!"
+subtitle: "Personal Project #2"
+author: "Garidon Hendricks"
+format:
+  html:
+    self-contained: true
+    page-layout: full
+    title-block-banner: true
+    toc: true
+    toc-depth: 3
+    toc-location: body
+    number-sections: false
+    html-math-method: katex
+    code-fold: true
+    code-summary: "Expand"
+    code-overflow: wrap
+    code-copy: hover
+    code-tools:
+        source: false
+        toggle: true
+        caption: See code
+execute: 
+  warning: false
+    
+---
+Credit to Sujay Kapadnis for making this data available for free on Kaggle. (https://www.kaggle.com/datasets/sujaykapadnis/new-york-times-bestsellers?resource=download)
+
+Let's have some fun with the New York Times Bestseller list, shall we?
+
+To get started, we first examine which of our data need cleaning. A brief peek in Data Wrangler tells us that the author column has 10 rows with missing values. Let's take a look:
+```{python}
+import pandas as pd
+from lets_plot import *
+LetsPlot.setup_html(isolated_frame=True)
+
+df = pd.read_csv("nyt_full.tsv", sep="\t")
+
+missing_authors = df[df['author'].isna()]
+missing_authors
+```
+
+So it appears that in those 10 rows, there are only 4 unique titles, and in each, the author;s name is attached to the name of the book in the title column. Because the number of missing data is so small, we can manually set up a helper dataframe with the correct titles and authors, then join the two, clean up the names, and remove unnecessary information.
+```{python}
+corrections = pd.DataFrame({
+    'title': [
+        'MUTINY ON THE BOUNTY, Charles Nordhoff and James N. Hall. (Little, Brown.) ',
+        'HOLY DEADLOCK,  by A. P. Herbert. (Doubleday, Doran.) ',
+        'EAST AND WEST,  by Somerset Maugham. (Doubleday, Doran.) ',
+        'A CITY OF BELLS,  by Elizabeth Goudge. (Coward-McCann.) '
+    ],
+    'correct_title': [
+        'MUTINY ON THE BOUNTY',
+        'HOLY DEADLOCK',
+        'EAST AND WEST',
+        'A CITY OF BELLS'
+    ],
+    'author': [
+        'Charles Nordhoff and James Norman Hall',
+        'A. P. Herbert',
+        'W. Somerset Maugham',
+        'Elizabeth Goudge'
+    ]
+})
+
+df_clean = df.merge(corrections,on='title',how='left')
+df_clean['correct_title'] = df_clean['correct_title'].fillna(df_clean['title'])
+df_clean['title'] = df_clean['correct_title']
+df_clean['author_x'] = df_clean['author_x'].fillna(df_clean['author_y'])
+df_clean = df_clean.rename(columns={'author_x':'author'})
+df_clean = df_clean.drop(columns=['correct_title','author_y'])
+df_clean
+```
+
+Now that our data are all clean, we can start extracting insights. I wonder which books have spent the longest time ranked on the bestseller list.
+
+```{python}
+longevity = df_clean.copy()
+longevity['total_weeks'] = longevity.groupby('title')['title'].transform('count')
+
+all_rank_graph_data = longevity.drop_duplicates('title').sort_values('total_weeks',ascending=False).head(15).sort_values('total_weeks')
+
+all_rank_graph = (ggplot
+    (all_rank_graph_data,aes(x='total_weeks',y='title'))
+    +geom_bar(stat='identity')
+    +labs(x='Weeks',y='Title')
+    +ggtitle('15 Most Frequently Appearing Books on the NYT Bestseller List')
+    +ggsize(900,600)
+)
+all_rank_graph
+```
+
+It's worth noting that the measurement we're using for this, namely, total number of weeks the book spent on the bestseller list, includes multiple editions or reprints of the same book, even if those came years or decades later - but Oh, the Places You'll Go! was on the list at least once a year for _11 consecutive years._
+
+But what about the best of the best? Let's take a look at how the previous graph compares to the books that have held the #1 ranking for the longest.
+```{python}
+number_one_bestseller = df_clean.copy()
+number_one_bestseller = number_one_bestseller.query("rank == 1")
+number_one_bestseller['total_weeks'] = number_one_bestseller.groupby('title')['title'].transform('count')
+
+number_one_graph_data = number_one_bestseller.drop_duplicates('title').sort_values('total_weeks',ascending=False).head(15).sort_values('total_weeks')
+
+number_one_graph = (ggplot
+    (number_one_graph_data,aes(x='total_weeks',y='title'))
+    +geom_bar(stat='identity')
+    +labs(x='Weeks',y='Title')
+    +ggtitle('15 Books Most Frequently Ranked #1 on the NYT Bestseller List')
+    +ggsize(900,600)
+)
+number_one_graph
+```
+
+Interesting! There are 7 titles shared across the two lists, or about 47% overlap. 
+```{python}
+in_both = all_rank_graph_data[all_rank_graph_data['title'].isin(number_one_graph_data['title'])]
+in_both['title']
+```
+
