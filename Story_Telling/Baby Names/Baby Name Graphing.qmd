@@ -32,6 +32,7 @@ from lets_plot import *
 from IPython.display import display, Markdown
 
 LetsPlot.setup_html(isolated_frame=True)
+
 ```
 
 You can download this qmd file and the associated data here: https://github.com/byui-math-dept/garidon_fall2025_2/tree/main/Personal_Projects/Baby%20Names
